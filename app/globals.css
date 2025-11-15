@@ -23,4 +23,115 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* 3D Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(5deg);
+  }
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-100px) translateX(50px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateX(20deg) translateZ(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) translateZ(0);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+  transform-style: preserve-3d;
+}
+
+.animate-float-particle {
+  animation: float-particle 10s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 1.5s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out forwards;
+}
+
+.animate-zoom-in {
+  animation: zoom-in 2s ease-out forwards;
+}
+
+.card-3d {
+  transform-style: preserve-3d;
+  opacity: 0;
+  transform: translateY(50px) rotateX(20deg) translateZ(-100px);
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.card-3d.animate-in {
+  animation: card-enter 0.8s ease-out forwards;
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg) scale(1.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* 3D Perspective for hero section */
+section[style*="transform-style"] {
+  perspective: 1000px;
 }
