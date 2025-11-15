@@ -1,11 +1,27 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const images = [
+    '/ala.archa 1.jpeg',
+    '/ala.archa 2.jpg',
+    '/ala.archa 3.jpg'
+  ];
+
+  useEffect(() => {
+    // Автоматическая смена изображений
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 5000); // Меняем каждые 5 секунд
+
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -41,18 +57,42 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-900 via-blue-800 to-indigo-900 overflow-hidden">
+    <div className="min-h-screen overflow-hidden relative">
+      {/* Fixed Background Layer - always visible behind everything */}
+      <div className="fixed inset-0 z-0" style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}>
+        {images.map((image, index) => (
+          <div
+            key={`bg-${index}`}
+            className={`fixed inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? 'opacity-100 z-0' : 'opacity-0 z-0'
+            }`}
+            style={{ position: 'fixed' }}
+          >
+            <Image
+              src={image}
+              alt={`Фон Ала-Арча ${index + 1}`}
+              fill
+              className="object-cover"
+              quality={85}
+              priority={index === 0}
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40"></div>
+          </div>
+        ))}
+      </div>
+
       {/* Logo */}
       <div className="fixed top-8 left-8 z-50 animate-fade-in">
-        <div className="bg-white/10 backdrop-blur-md rounded-full p-3 shadow-2xl border border-white/20 hover:scale-110 transition-transform duration-300">
-          <Image
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 shadow-2xl border border-white/20 hover:scale-110 transition-transform duration-300">
+        <Image
             src="/Rus.png"
             alt="Логотип Ала-Арча"
-            width={64}
-            height={64}
-            className="rounded-full"
-            priority
-          />
+            width={120}
+            height={120}
+            className="object-contain"
+          priority
+        />
         </div>
       </div>
 
@@ -63,23 +103,30 @@ export default function Home() {
         style={{ transformStyle: 'preserve-3d' }}
       >
         <div className="absolute inset-0 overflow-hidden">
-          {/* Placeholder for mountain image - replace with actual image */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-30 animate-zoom-in"
-            style={{
-              backgroundImage: "url('/ala-archa-mountains.jpg')",
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-            }}
-          >
-            {/* Fallback gradient if image is not available */}
-            <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/40 via-teal-600/30 to-cyan-600/40"></div>
+          {/* Image Slider */}
+          <div className="absolute inset-0">
+            {images.map((image, index) => (
+              <div
+                key={index}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  index === currentImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                }`}
+              >
+                <Image
+                  src={image}
+                  alt={`Ала-Арча ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  priority={index === 0}
+                  quality={90}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+              </div>
+            ))}
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-sky-900/90 via-blue-800/70 to-transparent"></div>
         </div>
 
-        <div className="relative z-10 text-center max-w-6xl mx-auto animate-slide-up">
+        <div className="relative z-30 text-center max-w-6xl mx-auto animate-slide-up">
           <h1 className="text-7xl md:text-9xl font-bold text-white mb-6 drop-shadow-2xl transform-gpu">
             <span className="inline-block animate-float">Ала-Арча</span>
           </h1>
@@ -92,7 +139,7 @@ export default function Home() {
         </div>
 
         {/* Floating particles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-20">
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
@@ -106,12 +153,28 @@ export default function Home() {
             />
           ))}
         </div>
+
+        {/* Image Indicators */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 flex gap-3">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentImageIndex
+                  ? 'w-12 h-2 bg-white'
+                  : 'w-2 h-2 bg-white/50 hover:bg-white/75'
+              }`}
+              aria-label={`Показать изображение ${index + 1}`}
+            />
+          ))}
+        </div>
       </section>
 
       {/* Information Sections */}
-      <section className="relative py-32 px-4 bg-gradient-to-b from-indigo-900 to-sky-900">
+      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20 animate-fade-in drop-shadow-2xl">
             О парке
           </h2>
 
@@ -192,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="relative py-32 px-4 bg-gradient-to-b from-sky-900 to-indigo-900">
+      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
         <div className="max-w-5xl mx-auto">
           <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
