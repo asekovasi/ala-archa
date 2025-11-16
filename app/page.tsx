@@ -10,7 +10,7 @@ export default function Home() {
 
   const images = [
     '/ala.archa 1.jpeg',
-    '/ala.archa 2.jpg',
+    '/ala.archa 4.jpg',
     '/ala.archa 3.jpg'
   ];
 
@@ -73,11 +73,12 @@ export default function Home() {
               alt={`Фон Ала-Арча ${index + 1}`}
               fill
               className="object-cover"
-              quality={85}
+              quality={100}
               priority={index === 0}
               sizes="100vw"
+              unoptimized
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/40"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-black/5 to-black/5"></div>
           </div>
         ))}
       </div>
@@ -118,20 +119,30 @@ export default function Home() {
                   fill
                   className="object-cover"
                   priority={index === 0}
-                  quality={90}
+                  quality={100}
+                  unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
               </div>
             ))}
           </div>
         </div>
 
         <div className="relative z-30 text-center max-w-6xl mx-auto animate-slide-up">
-          <h1 className="text-7xl md:text-9xl font-bold text-white mb-6 drop-shadow-2xl transform-gpu">
-            <span className="inline-block animate-float">Ала-Арча</span>
+          <h1 className="text-7xl md:text-9xl font-bold mb-6 drop-shadow-2xl transform-gpu">
+            <span className="inline-block animate-float bg-clip-text text-transparent" style={{
+              backgroundImage: 'linear-gradient(to right, rgb(34, 197, 94), rgb(22, 163, 74))',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontFamily: 'system-ui, -apple-system, sans-serif',
+              letterSpacing: '0.05em',
+              fontWeight: 700
+            }}>
+              АЛА-АРЧА
+            </span>
           </h1>
           <p className="text-2xl md:text-4xl text-blue-100 mb-8 font-light tracking-wide">
-            Кыргызский государственный природный парк
+            Кыргызский Государственный природный парк
           </p>
           <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
             Уникальный уголок природы в сердце Тянь-Шаня
