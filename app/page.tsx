@@ -9,9 +9,12 @@ export default function Home() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
-    '/ala.archa 1.jpeg',
     '/ala.archa 4.jpg',
-    '/ala.archa 3.jpg'
+    '/ala.archa 5.jpg',
+    '/ala.archa 6.1.jpg',
+    '/ala.archa 8.jpeg',
+    '/ala.archa 3.jpg',
+    '/ala.archa 1.jpeg'
   ];
 
   useEffect(() => {
