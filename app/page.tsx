@@ -12,9 +12,7 @@ export default function Home() {
     '/ala.archa 4.jpg',
     '/ala.archa 5.jpg',
     '/ala.archa 6.1.jpg',
-    '/ala.archa 8.jpeg',
-    '/ala.archa 3.jpg',
-    '/ala.archa 1.jpeg'
+    '/ala.archa 8.jpeg'
   ];
 
   useEffect(() => {
