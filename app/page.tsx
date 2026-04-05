@@ -142,8 +142,8 @@ export default function Home() {
           </p>
 
           {/* Glassmorphism Search Block */}
-          <div className="max-w-3xl mx-auto">
-            <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 md:p-8 shadow-lg border border-white/30">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-10 md:p-12 shadow-2xl border border-white/20">
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
                   type="text"
@@ -156,17 +156,17 @@ export default function Home() {
               </div>
               
               {/* Quick Links */}
-              <div className="mt-6 flex flex-wrap gap-3 justify-center">
-                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+              <div className="mt-8 flex flex-wrap gap-3 justify-center">
+                <button className="px-5 py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
                   🏔️ Маршруты
                 </button>
-                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                <button className="px-5 py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
                   📸 Фотогалерея
                 </button>
-                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                <button className="px-5 py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
                   ℹ️ Информация
                 </button>
-                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                <button className="px-5 py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
                   🎒 Туры
                 </button>
               </div>
@@ -209,20 +209,20 @@ export default function Home() {
 
       {/* Information Sections */}
       <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20 animate-fade-in drop-shadow-2xl">
             О парке
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {/* Card 1 */}
             <div
               ref={(el) => { cardRefs.current[0] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">🏔️</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">🏔️</div>
               <h3 className="text-2xl font-bold text-white mb-4">Расположение</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Парк расположен в Кыргызстане, в 40 км к югу от Бишкека, в ущелье Ала-Арча на северном склоне Кыргызского хребта Тянь-Шаня.
               </p>
             </div>
@@ -230,11 +230,11 @@ export default function Home() {
             {/* Card 2 */}
             <div
               ref={(el) => { cardRefs.current[1] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">🌲</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">🌲</div>
               <h3 className="text-2xl font-bold text-white mb-4">Флора и фауна</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Парк славится разнообразием растительного и животного мира. Здесь обитают снежные барсы, горные козлы и множество видов птиц.
               </p>
             </div>
@@ -242,11 +242,11 @@ export default function Home() {
             {/* Card 3 */}
             <div
               ref={(el) => { cardRefs.current[2] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">⛰️</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">⛰️</div>
               <h3 className="text-2xl font-bold text-white mb-4">Высота</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Высота парка варьируется от 1500 до 4895 метров над уровнем моря. Самая высокая точка — пик Семёнова-Тян-Шанского.
               </p>
             </div>
@@ -254,11 +254,11 @@ export default function Home() {
             {/* Card 4 */}
             <div
               ref={(el) => { cardRefs.current[3] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">🎒</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">🎒</div>
               <h3 className="text-2xl font-bold text-white mb-4">Активный отдых</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Парк предлагает множество возможностей для альпинизма, пеших походов, скалолазания и наслаждения природой.
               </p>
             </div>
@@ -266,11 +266,11 @@ export default function Home() {
             {/* Card 5 */}
             <div
               ref={(el) => { cardRefs.current[4] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">🌊</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">🌊</div>
               <h3 className="text-2xl font-bold text-white mb-4">Реки и водопады</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 По территории парка протекает река Ала-Арча с множеством живописных водопадов и кристально чистой водой.
               </p>
             </div>
@@ -278,11 +278,11 @@ export default function Home() {
             {/* Card 6 */}
             <div
               ref={(el) => { cardRefs.current[5] = el; }}
-              className="card-3d bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-105"
+              className="card-3d group bg-white/30 backdrop-blur-xl rounded-2xl p-10 border border-white/20 shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
             >
-              <div className="text-5xl mb-4">⭐</div>
+              <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">⭐</div>
               <h3 className="text-2xl font-bold text-white mb-4">Статус</h3>
-              <p className="text-blue-100 leading-relaxed">
+              <p className="text-white/90 leading-relaxed">
                 Парк был создан в 1976 году и является одним из самых популярных природных заповедников Кыргызстана.
               </p>
             </div>
@@ -292,12 +292,12 @@ export default function Home() {
 
       {/* Additional Info Section */}
       <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
-        <div className="max-w-5xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-md rounded-3xl p-12 border border-white/20 shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-12 md:p-16 border border-white/20 shadow-2xl transform transition-all duration-300 hover:scale-[1.02]">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
               История и значение
             </h2>
-            <div className="space-y-6 text-blue-100 text-lg leading-relaxed">
+            <div className="space-y-6 text-white/90 text-lg leading-relaxed">
               <p>
                 Государственный природный парк «Ала-Арча» — это уникальный природный комплекс, который играет важную роль в сохранении биоразнообразия Кыргызстана. Парк занимает площадь около 19,4 тысяч гектаров и является домом для множества редких и эндемичных видов растений и животных.
               </p>
