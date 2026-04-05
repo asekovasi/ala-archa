@@ -98,14 +98,14 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Hero Section with 3D Effect */}
+      {/* Hero Section with Modern Design */}
       <section 
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center px-4 transition-transform duration-300 ease-out"
         style={{ transformStyle: 'preserve-3d' }}
       >
+        {/* Background Image with Dark Overlay */}
         <div className="absolute inset-0 overflow-hidden">
-          {/* Image Slider */}
           <div className="absolute inset-0">
             {images.map((image, index) => (
               <div
@@ -123,31 +123,55 @@ export default function Home() {
                   quality={100}
                   unoptimized
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent"></div>
               </div>
             ))}
           </div>
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
         </div>
 
-        <div className="relative z-30 text-center max-w-6xl mx-auto animate-slide-up">
-          <h1 className="text-7xl md:text-9xl font-bold mb-6 drop-shadow-2xl transform-gpu">
-            <span className="inline-block animate-float bg-clip-text text-transparent" style={{
-              backgroundImage: 'linear-gradient(to right, rgb(34, 197, 94), rgb(22, 163, 74))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              fontFamily: 'system-ui, -apple-system, sans-serif',
-              letterSpacing: '0.05em',
-              fontWeight: 700
-            }}>
-              АЛА-АРЧА
-            </span>
+        {/* Content */}
+        <div className="relative z-30 text-center max-w-6xl mx-auto w-full animate-slide-up px-4">
+          {/* Main Heading */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 text-white drop-shadow-2xl">
+            Discover Ala-Archa Like Never Before
           </h1>
-          <p className="text-2xl md:text-4xl text-blue-100 mb-8 font-light tracking-wide">
-            Кыргызский Государственный природный парк
+          
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+            Исследуйте величественные горы и первозданную природу Кыргызстана
           </p>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Уникальный уголок природы в сердце Тянь-Шаня
-          </p>
+
+          {/* Glassmorphism Search Block */}
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-white/20 backdrop-blur-lg rounded-3xl p-6 md:p-8 shadow-lg border border-white/30">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input
+                  type="text"
+                  placeholder="Поиск маршрутов, достопримечательностей..."
+                  className="flex-1 px-6 py-4 rounded-2xl bg-white/30 backdrop-blur-md border border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300"
+                />
+                <button className="px-8 py-4 bg-white text-gray-900 rounded-2xl font-semibold hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                  Искать
+                </button>
+              </div>
+              
+              {/* Quick Links */}
+              <div className="mt-6 flex flex-wrap gap-3 justify-center">
+                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                  🏔️ Маршруты
+                </button>
+                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                  📸 Фотогалерея
+                </button>
+                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                  ℹ️ Информация
+                </button>
+                <button className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-full text-white text-sm hover:bg-white/30 transition-all duration-300 border border-white/30">
+                  🎒 Туры
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Floating particles */}
