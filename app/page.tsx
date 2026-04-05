@@ -106,16 +106,16 @@ export default function Home() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+              <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 hover:scale-105">
                 О парке
               </a>
-              <a href="#explore" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+              <a href="#explore" className="text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 hover:scale-105">
                 Исследовать
               </a>
-              <a href="#info" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+              <a href="#info" className="text-gray-700 hover:text-gray-900 font-medium transition-all duration-300 hover:scale-105">
                 Информация
               </a>
-              <button className="px-6 py-2.5 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+              <button className="px-6 py-2.5 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 active:scale-95 transition-all duration-300 shadow-md hover:shadow-lg">
                 Забронировать
               </button>
             </div>
@@ -124,7 +124,7 @@ export default function Home() {
             <div className="md:hidden">
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+                className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-all duration-300 active:scale-95"
                 aria-label="Открыть меню"
               >
                 {mobileMenuOpen ? (
@@ -142,30 +142,30 @@ export default function Home() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200 bg-white/90 backdrop-blur-lg">
+            <div className="md:hidden py-4 border-t border-gray-200 bg-white/90 backdrop-blur-lg animate-fade-in">
               <div className="flex flex-col space-y-3">
                 <a 
                   href="#about" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors duration-200"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-all duration-300 active:scale-95"
                 >
                   О парке
                 </a>
                 <a 
                   href="#explore" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors duration-200"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-all duration-300 active:scale-95"
                 >
                   Исследовать
                 </a>
                 <a 
                   href="#info" 
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-colors duration-200"
+                  className="px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg font-medium transition-all duration-300 active:scale-95"
                 >
                   Информация
                 </a>
-                <button className="mx-4 py-3 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 shadow-md active:scale-95">
+                <button className="mx-4 py-3 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 active:scale-95 transition-all duration-300 shadow-md">
                   Забронировать
                 </button>
               </div>
@@ -226,23 +226,23 @@ export default function Home() {
                   placeholder="Поиск маршрутов..."
                   className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/30 backdrop-blur-md border border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 shadow-lg text-sm sm:text-base"
                 />
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-white text-gray-900 rounded-2xl font-semibold hover:bg-white/90 transition-all duration-300 shadow-xl hover:shadow-2xl active:scale-95 text-sm sm:text-base">
+                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 text-white rounded-2xl font-semibold hover:bg-blue-700 active:scale-95 transition-all duration-300 shadow-xl hover:shadow-2xl text-sm sm:text-base">
                   Искать
                 </button>
               </div>
               
               {/* Quick Links */}
               <div className="mt-6 sm:mt-8 flex flex-wrap gap-2 sm:gap-3 justify-center">
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/30 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95">
+                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105">
                   🏔️ Маршруты
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/30 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95">
+                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105">
                   📸 Фото
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/30 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95">
+                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105">
                   ℹ️ Инфо
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/30 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95">
+                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105">
                   🎒 Туры
                 </button>
               </div>
@@ -309,7 +309,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   40 км от Бишкека, северный склон Кыргызского хребта Тянь-Шаня
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Узнать больше →
                 </button>
               </div>
@@ -333,7 +333,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   Снежные барсы, горные козлы и множество видов редких птиц
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Исследовать →
                 </button>
               </div>
@@ -357,7 +357,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   От 1500 до 4895 метров. Пик Семёнова-Тян-Шанского
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Подробнее →
                 </button>
               </div>
@@ -381,7 +381,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   Альпинизм, пешие походы, скалолазание и единение с природой
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Начать →
                 </button>
               </div>
@@ -405,7 +405,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   Река Ала-Арча с живописными водопадами и кристальной водой
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   Открыть →
                 </button>
               </div>
@@ -429,7 +429,7 @@ export default function Home() {
                 <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
                   Создан в 1976 году. Один из популярнейших заповедников страны
                 </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/30 transition-all duration-300 shadow-lg">
+                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl">
                   История →
                 </button>
               </div>
