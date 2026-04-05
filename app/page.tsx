@@ -84,24 +84,57 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Logo */}
-      <div className="fixed top-8 left-8 z-50 animate-fade-in">
-        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-3 shadow-2xl border border-white/20 hover:scale-110 transition-transform duration-300">
-        <Image
-            src="/Rus.png"
-            alt="Логотип Ала-Арча"
-            width={120}
-            height={120}
-            className="object-contain"
-          priority
-        />
+      {/* Modern Sticky Navbar */}
+      <nav className="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-lg border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <div className="flex items-center">
+              <div className="bg-white/80 backdrop-blur-md rounded-xl p-2 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <Image
+                  src="/Rus.png"
+                  alt="Логотип Ала-Арча"
+                  width={60}
+                  height={60}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <span className="ml-3 text-xl font-bold text-gray-900">Ала-Арча</span>
+            </div>
+
+            {/* Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              <a href="#about" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+                О парке
+              </a>
+              <a href="#explore" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+                Исследовать
+              </a>
+              <a href="#info" className="text-gray-700 hover:text-gray-900 font-medium transition-colors duration-200">
+                Информация
+              </a>
+              <button className="px-6 py-2.5 bg-gray-900 text-white rounded-full font-semibold hover:bg-gray-800 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105">
+                Забронировать
+              </button>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button className="p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors duration-200">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
+      </nav>
 
       {/* Hero Section with Modern Design */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center px-4 transition-transform duration-300 ease-out"
+        className="relative min-h-screen flex items-center justify-center px-4 pt-20 transition-transform duration-300 ease-out"
         style={{ transformStyle: 'preserve-3d' }}
       >
         {/* Background Image with Dark Overlay */}
@@ -208,7 +241,7 @@ export default function Home() {
       </section>
 
       {/* Information Sections */}
-      <section className="relative py-32 px-4 bg-white/95 backdrop-blur-sm z-20 animate-section-fade">
+      <section id="explore" className="relative py-32 px-4 bg-white/95 backdrop-blur-sm z-20 animate-section-fade">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-bold text-center text-gray-900 mb-20 drop-shadow-lg">
             Откройте для себя Ала-Арча
@@ -363,7 +396,7 @@ export default function Home() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="relative py-32 px-4 bg-gradient-to-b from-white/95 to-gray-50/95 backdrop-blur-sm z-20 animate-section-fade">
+      <section id="info" className="relative py-32 px-4 bg-gradient-to-b from-white/95 to-gray-50/95 backdrop-blur-sm z-20 animate-section-fade">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white/80 backdrop-blur-xl rounded-2xl p-12 md:p-16 border border-gray-200/50 shadow-2xl transform transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)]">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-12 text-center drop-shadow-sm">
