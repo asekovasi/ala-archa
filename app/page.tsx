@@ -131,18 +131,18 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-30 text-center max-w-6xl mx-auto w-full animate-slide-up px-4">
+        <div className="relative z-30 text-center max-w-6xl mx-auto w-full px-4">
           {/* Main Heading */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 text-white drop-shadow-2xl">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 md:mb-8 text-white drop-shadow-2xl animate-hero-title">
             Discover Ala-Archa Like Never Before
           </h1>
           
-          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/90 mb-8 md:mb-12 max-w-3xl mx-auto leading-relaxed animate-hero-subtitle">
             Исследуйте величественные горы и первозданную природу Кыргызстана
           </p>
 
           {/* Glassmorphism Search Block */}
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto animate-hero-search">
             <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-10 md:p-12 shadow-2xl border border-white/20">
               <div className="flex flex-col sm:flex-row gap-4">
                 <input
@@ -208,9 +208,9 @@ export default function Home() {
       </section>
 
       {/* Information Sections */}
-      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
+      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20 animate-section-fade">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20 animate-fade-in drop-shadow-2xl">
+          <h2 className="text-5xl md:text-6xl font-bold text-center text-white mb-20 drop-shadow-2xl">
             Откройте для себя Ала-Арча
           </h2>
 
@@ -218,7 +218,7 @@ export default function Home() {
             {/* Card 1 - Расположение */}
             <div
               ref={(el) => { cardRefs.current[0] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 4.jpg"
@@ -242,7 +242,7 @@ export default function Home() {
             {/* Card 2 - Флора и фауна */}
             <div
               ref={(el) => { cardRefs.current[1] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 5.jpg"
@@ -266,7 +266,7 @@ export default function Home() {
             {/* Card 3 - Высота */}
             <div
               ref={(el) => { cardRefs.current[2] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 6.1.jpg"
@@ -290,7 +290,7 @@ export default function Home() {
             {/* Card 4 - Активный отдых */}
             <div
               ref={(el) => { cardRefs.current[3] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 8.jpeg"
@@ -314,7 +314,7 @@ export default function Home() {
             {/* Card 5 - Реки и водопады */}
             <div
               ref={(el) => { cardRefs.current[4] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 4.jpg"
@@ -338,7 +338,7 @@ export default function Home() {
             {/* Card 6 - Статус */}
             <div
               ref={(el) => { cardRefs.current[5] = el; }}
-              className="card-3d group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
+              className="animate-card group relative rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
             >
               <Image
                 src="/ala.archa 5.jpg"
@@ -363,7 +363,7 @@ export default function Home() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20">
+      <section className="relative py-32 px-4 bg-transparent backdrop-blur-sm z-20 animate-section-fade">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-12 md:p-16 border border-white/20 shadow-2xl transform transition-all duration-300 hover:scale-[1.02]">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-12 text-center">
