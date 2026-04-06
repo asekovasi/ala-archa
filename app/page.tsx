@@ -8,6 +8,7 @@ export default function Home() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const images = [
     '/ala.archa 4.jpg',
@@ -15,6 +16,76 @@ export default function Home() {
     '/ala.archa 6.1.jpg',
     '/ala.archa 8.jpeg'
   ];
+
+  const tours = [
+    {
+      id: 1,
+      title: 'Расположение',
+      description: '40 км от Бишкека, северный склон Кыргызского хребта Тянь-Шаня',
+      icon: '🏔️',
+      image: '/ala.archa 4.jpg',
+      buttonText: 'Узнать больше →',
+      difficulty: 'easy',
+      keywords: 'location map directions бишкек расположение карта'
+    },
+    {
+      id: 2,
+      title: 'Флора и фауна',
+      description: 'Снежные барсы, горные козлы и множество видов редких птиц',
+      icon: '🌲',
+      image: '/ala.archa 5.jpg',
+      buttonText: 'Исследовать →',
+      difficulty: 'easy',
+      keywords: 'wildlife nature animals flora fauna животные природа'
+    },
+    {
+      id: 3,
+      title: 'Высота',
+      description: 'От 1500 до 4895 метров. Пик Семёнова-Тян-Шанского',
+      icon: '⛰️',
+      image: '/ala.archa 6.1.jpg',
+      buttonText: 'Подробнее →',
+      difficulty: 'hard',
+      keywords: 'altitude peak summit высота пик вершина'
+    },
+    {
+      id: 4,
+      title: 'Активный отдых',
+      description: 'Альпинизм, пешие походы, скалолазание и единение с природой',
+      icon: '🎒',
+      image: '/ala.archa 8.jpeg',
+      buttonText: 'Начать →',
+      difficulty: 'medium',
+      keywords: 'hiking climbing trekking adventure альпинизм походы'
+    },
+    {
+      id: 5,
+      title: 'Реки и водопады',
+      description: 'Река Ала-Арча с живописными водопадами и кристальной водой',
+      icon: '🌊',
+      image: '/ala.archa 4.jpg',
+      buttonText: 'Открыть →',
+      difficulty: 'easy',
+      keywords: 'waterfall river water водопад река вода'
+    },
+    {
+      id: 6,
+      title: 'Статус',
+      description: 'Создан в 1976 году. Один из популярнейших заповедников страны',
+      icon: '⭐',
+      image: '/ala.archa 5.jpg',
+      buttonText: 'История →',
+      difficulty: 'easy',
+      keywords: 'history status park заповедник история статус'
+    }
+  ];
+
+  const filteredTours = tours.filter(tour =>
+    tour.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    tour.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    tour.keywords.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    tour.difficulty.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   useEffect(() => {
     // Автоматическая смена изображений
@@ -218,32 +289,52 @@ export default function Home() {
           </p>
 
           {/* Glassmorphism Search Block */}
-          <div className="max-w-6xl mx-auto animate-hero-search">
+          <div className="w-full max-w-6xl mx-auto animate-hero-search">
             <div className="bg-white/30 backdrop-blur-xl rounded-2xl p-6 sm:p-8 md:p-12 shadow-2xl border border-white/20 hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.4)] transition-shadow duration-300">
               <div className="flex flex-col gap-3 sm:gap-4">
                 <input
                   type="text"
-                  placeholder="Поиск маршрутов..."
+                  placeholder="Search routes, places, difficulty..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-white/30 backdrop-blur-md border border-white/40 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-300 shadow-lg text-sm sm:text-base"
                 />
-                <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 text-sm sm:text-base">
+                <button 
+                  onClick={() => {
+                    const section = document.getElementById('explore');
+                    section?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-2xl font-semibold hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-2xl hover:-translate-y-1 text-sm sm:text-base"
+                >
                   Искать
                 </button>
               </div>
               
               {/* Quick Links */}
               <div className="mt-6 sm:mt-8 flex flex-wrap gap-2 sm:gap-3 justify-center">
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5">
-                  🏔️ Маршруты
+                <button 
+                  onClick={() => setSearchQuery('easy')}
+                  className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5"
+                >
+                  🟢 Easy
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5">
-                  📸 Фото
+                <button 
+                  onClick={() => setSearchQuery('medium')}
+                  className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5"
+                >
+                  🟡 Medium
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5">
-                  ℹ️ Инфо
+                <button 
+                  onClick={() => setSearchQuery('hard')}
+                  className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5"
+                >
+                  🔴 Hard
                 </button>
-                <button className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5">
-                  🎒 Туры
+                <button 
+                  onClick={() => setSearchQuery('waterfall')}
+                  className="px-3 sm:px-5 py-2 sm:py-2.5 bg-white/20 backdrop-blur-md rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 transition-all duration-300 border border-white/30 shadow-md hover:shadow-lg active:scale-95 hover:scale-105 hover:-translate-y-0.5"
+                >
+                  💧 Waterfall
                 </button>
               </div>
             </div>
@@ -284,157 +375,78 @@ export default function Home() {
       </section>
 
       {/* Information Sections */}
-      <section id="explore" className="relative py-32 px-4 bg-white/95 backdrop-blur-sm z-20 animate-section-fade">
+      <section id="explore" className="relative py-16 sm:py-24 md:py-32 px-4 bg-gray-50 backdrop-blur-sm z-20 animate-section-fade">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold text-center text-gray-900 mb-20 drop-shadow-lg">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight text-center text-gray-900 mb-12 sm:mb-16 md:mb-20 drop-shadow-lg">
             Откройте для себя Ала-Арча
           </h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {/* Card 1 - Расположение */}
-            <div
-              ref={(el) => { cardRefs.current[0] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 4.jpg"
-                alt="Расположение парка"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">🏔️</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">Расположение</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  40 км от Бишкека, северный склон Кыргызского хребта Тянь-Шаня
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  Узнать больше →
-                </button>
-              </div>
+          {searchQuery && (
+            <div className="mb-8 text-center">
+              <p className="text-gray-600 text-sm sm:text-base">
+                Found <span className="font-semibold text-gray-900">{filteredTours.length}</span> {filteredTours.length === 1 ? 'route' : 'routes'}
+              </p>
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="mt-2 text-blue-600 hover:text-blue-800 text-sm font-semibold transition-colors duration-300"
+              >
+                Clear search ✕
+              </button>
             </div>
+          )}
 
-            {/* Card 2 - Флора и фауна */}
-            <div
-              ref={(el) => { cardRefs.current[1] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 5.jpg"
-                alt="Флора и фауна"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">🌲</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg tracking-tight">Флора и фауна</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  Снежные барсы, горные козлы и множество видов редких птиц
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  Исследовать →
-                </button>
-              </div>
+          {filteredTours.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">No routes found</h3>
+              <p className="text-gray-600 mb-6">Try searching for "easy", "waterfall", or "hiking"</p>
+              <button 
+                onClick={() => setSearchQuery('')}
+                className="px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-full font-semibold hover:from-blue-600 hover:to-blue-800 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                Show all routes
+              </button>
             </div>
-
-            {/* Card 3 - Высота */}
-            <div
-              ref={(el) => { cardRefs.current[2] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 6.1.jpg"
-                alt="Высота парка"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">⛰️</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg tracking-tight">Высота</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  От 1500 до 4895 метров. Пик Семёнова-Тян-Шанского
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  Подробнее →
-                </button>
-              </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-12">
+              {filteredTours.map((tour, index) => (
+                <div
+                  key={tour.id}
+                  ref={(el) => { cardRefs.current[index] = el; }}
+                  className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[350px] sm:h-[400px]"
+                >
+                  <Image
+                    src={tour.image}
+                    alt={tour.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                    <div className="text-3xl sm:text-4xl mb-3 sm:mb-4 drop-shadow-lg">{tour.icon}</div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                        tour.difficulty === 'easy' ? 'bg-green-500/80' :
+                        tour.difficulty === 'medium' ? 'bg-yellow-500/80' :
+                        'bg-red-500/80'
+                      } text-white`}>
+                        {tour.difficulty === 'easy' ? '🟢 Easy' :
+                         tour.difficulty === 'medium' ? '🟡 Medium' :
+                         '🔴 Hard'}
+                      </span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3 drop-shadow-lg tracking-tight">{tour.title}</h3>
+                    <p className="text-white/95 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 drop-shadow-md">
+                      {tour.description}
+                    </p>
+                    <button className="self-start px-4 sm:px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-xs sm:text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                      {tour.buttonText}
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
-
-            {/* Card 4 - Активный отдых */}
-            <div
-              ref={(el) => { cardRefs.current[3] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 8.jpeg"
-                alt="Активный отдых"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">🎒</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg tracking-tight">Активный отдых</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  Альпинизм, пешие походы, скалолазание и единение с природой
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  Начать →
-                </button>
-              </div>
-            </div>
-
-            {/* Card 5 - Реки и водопады */}
-            <div
-              ref={(el) => { cardRefs.current[4] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 4.jpg"
-                alt="Реки и водопады"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">🌊</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg tracking-tight">Реки и водопады</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  Река Ала-Арча с живописными водопадами и кристальной водой
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  Открыть →
-                </button>
-              </div>
-            </div>
-
-            {/* Card 6 - Статус */}
-            <div
-              ref={(el) => { cardRefs.current[5] = el; }}
-              className="animate-card group relative rounded-2xl overflow-hidden shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer h-[400px]"
-            >
-              <Image
-                src="/ala.archa 5.jpg"
-                alt="Статус парка"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-              <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                <div className="text-4xl mb-4 drop-shadow-lg">⭐</div>
-                <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg tracking-tight">Статус</h3>
-                <p className="text-white/95 text-sm leading-relaxed mb-4 drop-shadow-md">
-                  Создан в 1976 году. Один из популярнейших заповедников страны
-                </p>
-                <button className="self-start px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 rounded-full text-white text-sm font-semibold hover:bg-white/40 hover:scale-105 active:scale-95 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  История →
-                </button>
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       </section>
 
